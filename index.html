@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alycia’s Cleaning Co | Sparkle & Shine</title>
+    <meta name="description" content="Independent cleaning services in Kamloops, BC. Modern, creative, and colorful cleaning solutions.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- COLORFUL MODERN VARIABLES --- */
+        :root {
+            --primary-grad: linear-gradient(135deg, #FF0080 0%, #7928CA 100%); /* Pink-Purple */
+            --secondary-grad: linear-gradient(135deg, #007CF0 0%, #00DFD8 100%); /* Blue-Cyan */
+            --location-grad: linear-gradient(135deg, #f6d365 0%, #fda085 100%); /* Orange-Yellow */
+            --warning-grad: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%); /* Red-Orange */
+            --dark-bg: #0f0c29;
+            --glass: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --text-main: #1a1a2e;
+            --text-light: #555;
+            --white: #ffffff;
+            --pop-shadow: 0 10px 30px -10px rgba(121, 40, 202, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        /* --- CUSTOM "POLISHING BUFFER" CURSOR --- */
+        /* Default state: The Buffer (Blue Gradient) - matches "Sparkle & Shine" */
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-main);
+            overflow-x: hidden;
+            
+            /* CURSOR: Polishing Buffer */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%2300FFD8'/><stop offset='100%' stop-color='%2307CF0'/></linearGradient></defs><circle cx='16' cy='16' r='14' fill='url(%23g)' /><circle cx='16' cy='16' r='10' fill='%2300DFD8' opacity='0.6'/></svg>") 16 16, auto;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+
+        /* --- GLASS CONTAINER UTILITY --- */
+        .glass-panel {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 35px; 
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        /* Brand Grouping: Logo + Text */
+        .nav-brand-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            height: 65px; 
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        /* --- HEADER BRAND TEXT --- */
+        .header-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 900;
+            color: #000000; /* BLACK ONLY */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 15px; /* Space between logo and text */
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text-main); 
+            font-weight: 600; 
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: ''; 
+            position: absolute; 
+            width: 0; 
+            height: 3px; 
+            bottom: -5px; 
+            left: 0; 
+            background: var(--secondary-grad); 
+            transition: width 0.3s; 
+            border-radius: 2px;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        
+        /* Cursor Interaction for Nav Links */
+        .nav-links a:hover {
+            /* CURSOR: Polishing Buffer (The "Selection" State) */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%2300DFD8'/><stop offset='100%' stop-color='%2307CF0'/></linearGradient></defs><circle cx='16' cy='16' r='14' fill='url(%23g)' /><circle cx='16' cy='16' r='8' fill='%2300DFD8' opacity='0.8'/></svg>") 16 16, auto;
+        }
+
+        .menu-btn { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--text-main); z-index: 1002; }
+
+        /* --- RESPONSIVE HEADER LOGIC --- */
+        @media (max-width: 900px) {
+            .header-brand { display: none; } 
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 50px;
+            position: relative;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: -1;
+            animation: float 6s infinite ease-in-out;
+            opacity: 0.6;
+        }
+        .s1 { width: 300px; height: 300px; background: #ff00cc; top: 10%; left: 10%; animation-delay: 0s; }
+        .s2 { width: 400px; height: 400px; background: #3333ff; bottom: 10%; right: 10%; animation-delay: 2s; }
+        .s3 { width: 200px; height: 200px; background: #00ffcc; top: 40%; left: 60%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+        }
+
+        .hero-card {
+            max-width: 900px;
+            padding: 60px;
+            border-radius: 30px;
+            transform: skewY(-2deg); 
+            position: relative;
+            top: 30px; /* Make room for ticker */
+        }
+        
+        .hero-content { transform: skewY(2deg); }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .highlight {
+            background: var(--secondary-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .squiggle {
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q 25 20 50 10 T 100 10' stroke='%2300DFD8' fill='none' stroke-width='4'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            background-size: 50px 10px;
+            z-index: -1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+        }
+
+        .btn-main {
+            display: inline-block;
+            padding: 18px 45px;
+            border-radius: 50px;
+            background: var(--primary-grad);
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(255, 0, 128, 0.3);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+
+        /* Hero Button Interaction */
+        .btn-main:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 30px rgba(255, 0, 128, 0.5);
+            
+            /* CURSOR: The "Trigger" State (Red/Orange - Pressing the nozzle) */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23FF5E62'/><stop offset='100%' stop-color='%23FF0080'/></linearGradient></defs><circle cx='16' cy='16' r='14' fill='url(%23g)' /><rect x='13' y='0' width='6' height='32' rx='3' fill='%23ffffff'/></svg>") 16 16, auto;
+        }
+
+        /* --- HERO TICKER --- */
+        .hero-ticker {
+            position: absolute;
+            top: -10px; /* Sits slightly above that glass card */
+            left: 50%;
+            transform: translateX(-50%);
+            background: #D32F2F; /* RED BACKGROUND */
+            color: #ffffff; /* WHITE TEXT */
+            padding: 12px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            z-index: 10;
+            border: 2px solid #ffffff; /* WHITE BORDER */
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(211, 47, 47, 0.4); /* Red Glow */
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
+            font-size: 1rem;
+            max-width: 90%; /* Prevent overflow on mobile */
+            
+            /* BLINKING ANIMATION (4s = 2s off, 2s on) */
+            animation: blinkText 4s infinite;
+        }
+        
+        .ticker-track {
+            display: flex;
+            width: max-content; /* Important for smooth scroll */
+            animation: scrollLeft 30s linear infinite;
+        }
+        
+        .ticker-item {
+            padding: 0 50px;
+        }
+
+        @keyframes scrollLeft {
+            0% { transform: translateX(50%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        section { padding: 100px 20px; position: relative; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 3rem; margin-bottom: 60px; color: var(--white); text-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+        /* --- ABOUT --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .about-img-box { position: relative; border-radius: 30px; overflow: hidden; transform: rotate(-3deg); border: 5px solid var(--white); box-shadow: 20px 20px 0px rgba(255,255,255,0.4); transition: 0.5s; }
+        .about-img-box:hover { transform: rotate(0) scale(1.02); }
+        .about-img-box img { width: 100%; display: block; }
+        .about-text { padding: 40px; border-radius: 30px; background: var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        /* --- SERVICES --- */
+        .services-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px; align-items: stretch; }
+        .service-card { padding: 40px; border-radius: 30px; text-align: center; transition: 0.4s; position: relative; overflow: hidden; background: rgba(255, 255, 255, 0.9); border: 2px solid transparent; display: flex; flex-direction: column; justify-content: space-between; }
+        .service-card h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .price { font-size: 2.5rem; font-weight: 800; display: block; margin: 20px 0; font-family: 'Space Grotesk', sans-serif; }
+        .card-content { flex-grow: 1; }
+        .card-1 { border-color: #FF0080; }
+        .card-2 { border-color: #00DFD8; }
+        .service-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.2); background: var(--white); }
+        .service-list { text-align: left; margin: 20px 0; padding-left: 10px; }
+        .service-list li { margin-bottom: 12px; position: relative; padding-left: 25px; font-size: 1rem; color: var(--text-main); }
+        .service-list li::before { content: '✨'; position: absolute; left: 0; font-size: 0.8rem; top: 4px; }
+        .card-btn { margin-top: 20px; display: block; width: 100%; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; color: white; text-decoration: none; transition: 0.3s; }
+
+        /* Card Button Interaction */
+        .card-btn:hover {
+            /* CURSOR: Same "Trigger" state as Hero button */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23FF5E62'/><stop offset='100%' stop-color='%23FF0080'/></linearGradient></defs><circle cx='16' cy='16' r='14' fill='url(%23g)' /><rect x='13' y='0' width='6' height='32' rx='3' fill='%23ffffff'/></svg>") 16 16, auto;
+        }
+
+        /* --- CREATIVE DISCLAIMER STYLES --- */
+        .caution-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .caution-card { background: rgba(255, 255, 255, 0.95); border-radius: 20px; overflow: hidden; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: 0.3s; display: flex; flex-direction: column; border: 2px solid rgba(0,0,0,0.05); clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px + 15px) 100%, calc(0% + 20px - 15px) 100%, 0% calc(100% - 20px)); }
+        .caution-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .hazard-strip { height: 40px; width: 100%; background-size: 20px 20px; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0.2) 10px, transparent 10px, transparent 20px); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
+        .strip-1 { background: var(--secondary-grad); }
+        .strip-2 { background: var(--primary-grad); }
+        .strip-3 { background: var(--warning-grad); }
+        .caution-content { padding: 30px 20px 40px 20px; position: relative; z-index: 1; text-align: center; }
+        .bg-icon { position: absolute; bottom: -10px; right: -10px; font-size: 10rem; opacity: 0.05; z-index: -1; pointer-events: none; }
+        .caution-title { font-size:1.4rem; font-weight: 800; margin-bottom: 15px; display: block; }
+        .caution-text { font-size: 0.95rem; line-height: 1.6; color: #555; }
+
+        /* --- SIGNPOST --- */
+        .roadmap-container { position: relative; padding: 40px 0; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+        .roadmap-pole { position: absolute; top: 0; bottom: 0; left: 50%; width: 6px; background: linear-gradient(180deg, #ccc, #fff, #ccc); border-left: 2px solid rgba(0,0,0,0.1); border-right: 2px solid rgba(0,0,0,0.1); transform: translateX(-50%); z-index: 1; }
+        .sign { position: relative; z-index: 2; width: 100%; max-width: 900px; display: flex; justify-content: center; }
+        .sign-board { padding: 15px 30px; border-radius: 12px; color: white; font-weight: 700; font-size: 1.3rem; box-shadow: 0 10px 20px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 15px; transition: transform 0.3s; position: relative; }
+        .sign-board::after { content: ''; position: absolute; width: 20px; height: 20px; background: inherit; transform: rotate(45deg); }
+        .sign-board:hover { transform: scale(1.05); z-index: 10; }
+        .sign-main { background: var(--primary-grad); font-size: 2rem; padding: 25px 50px; border-radius: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .sign-main::after { display: none; }
+        .sign.left .sign-board { background: var(--secondary-grad); margin-right: auto; border-bottom-right-radius: 0; }
+        .sign.left .sign-board::after { right: -10px; top: 50%; transform: translateY(-50%) rotate(45deg); }
+        .sign.left::after { content: ''; width: 50%; }
+        .sign.right .sign-board { background: var(--location-grad); margin-left: auto; border-bottom-left-radius: 0; }
+        .sign.right .sign-board::after { left: -10px; top: 50%; transform: translateY(-50%) rotate(45deg); }
+        .sign.right::before { content: ''; width: 50%; }
+        .distance-badge { background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- CONTACT --- */
+        .contact-section { text-align: center; }
+        .contact-links { display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
+        .c-pill { background: var(--white); padding: 20px 40px; border-radius: 50px; text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: 0.3s; display: flex; align-items: center; gap: 10px; }
+        
+        /* Pill Interaction */
+        .c-pill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            
+            /* CURSOR: Polishing Buffer (The "Selection" State) */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%2300DFD8'/><stop offset='100%' stop-color='%2307CF0'/></linearGradient></defs><circle cx='16' cy='16' r='14' fill='url(%23g)' /><circle cx='16' cy='16' r='8' fill='%2300DFD8' opacity='0.8'/></svg>") 16 16, auto;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) { 
+            .brand-logo { height: 55px; } 
+            .about-grid { gap: 20px; } 
+            .about-text { padding: 25px; }
+            .header-brand { display: none; } 
+        }
+
+        @media (max-width: 768px) {
+            nav { width: 95%; top: 10px; padding: 10px 15px; }
+            .brand-logo { height: 45px; }
+            .menu-btn { display: block; }
+            .nav-links { display: none; position: absolute; top: 70px; left: 0; width: 100%; background: white; flex-direction: column; align-items: center; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+            .nav-links.active { display: flex; }
+            .hero-card { padding: 30px; transform: none; }
+            .hero-content { transform: none; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-img-box { transform: none; margin-bottom: 20px; }
+            .contact-links { flex-direction: column; width: 100%; align-items: center; }
+            .c-pill { width: 100%; justify-content: center; }
+            .roadmap-pole { display: none; }
+            .sign { justify-content: center; margin-bottom: 10px; }
+            .sign.left .sign-board, .sign.right .sign-board { margin: 0; width: 100%; text-align: center; justify-content: center; border-radius: 12px; }
+            .sign.left .sign-board::after, .sign.right .sign-board::after { display: none; }
+            .sign.left::after, .sign.right::before { display: none; }
+            
+            /* Adjust ticker for mobile */
+            .hero-ticker { font-size: 0.8rem; letter-spacing: 1px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="shape s1"></div>
+    <div class="shape s2"></div>
+    <div class="shape s3"></div>
+
+    <!-- Navigation -->
+    <nav class="glass-panel">
+        <!-- Brand Group -->
+        <a href="#" class="nav-brand-group" style="text-decoration: none; display: flex; align-items: center;">
+            <!-- Logo Image -->
+            <img src="https://z-cdn-media.chatglm.cn/files/1dba773d-7c83-43fe-a456-9f8b56d43a8f.png?auth_key=1870001847-2651e14e0eda45e0ab559ac43d487cb6-0-59506a41565a4ed0f2338a8dee6905c6" alt="Alycia's Cleaning Co Logo" class="brand-logo">
+            
+            <!-- Company Name (Black, Beautiful Font) -->
+            <div class="header-brand">
+                ALYCIAS CLEANING CO
+            </div>
+        </a>
+
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="#about" onclick="toggleMenu()">About</a>
+            <a href="#services" onclick="toggleMenu()">Services</a>
+            <a href="#areas" onclick="toggleMenu()">Service Area</a>
+            <a href="#disclaimer" onclick="toggleMenu()">Policies</a>
+            <a href="#contact" onclick="toggleMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="glass-panel hero-card">
+            
+            <!-- RED & WHITE BLINKING TICKER -->
+            <div class="hero-ticker">
+                <span class="ticker-item">SUPPORT LOCAL</span>
+            </div>
+
+            <div class="hero-content">
+                
+                <h1>Clean Spaces, <br><span class="highlight">Colorful Life.<div class="squiggle"></div></span></h1>
+
+                <p>Independent, energetic, and detailed cleaning services in Kamloops & Surrounding Areas.</p>
+                
+                <!-- Button opens email -->
+                <a href="mailto:alyciascleaningco@outlook.com" class="btn-main">Book My Clean ✨</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img-box">
+                    <img src="https://picsum.photos/seed/cleanvibe/600/600" alt="Creative Cleaning">
+                </div>
+                <div class="about-text">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Hey, I'm Alycia!</h2>
+                    <p style="margin-bottom: 15px;">I'm an independent cleaner based in Kamloops, B.C. After 12 years in healthcare, I'm pivoting back to my roots in cleaning—bringing hospital-grade standards to your home.</p>
+                    <p style="margin-bottom: 15px;">I've cleaned everything from hotels to long-term care facilities. I know how to tackle stains efficiently so you can get back to enjoying your life.</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+                        <span style="background:#e0f7fa; padding:5px 15px; border-radius:20px; color:#006064; font-weight:bold;">📍 Kamloops</span>
+                        <span style="background:#e0f7fa; padding:5px 15px; border-radius:20px; color:#006064; font-weight:bold;">🧹 Pro Detail</span>
+                        <span style="background:#e0f7fa; padding:5px 15px; border-radius:20px; color:#006064; font-weight:bold;">⚡ Efficient</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Choose Your Sparkle</h2>
+            <div class="services-wrapper">
+                
+                <!-- Standard Clean -->
+                <div class="service-card card-1 glass-panel">
+                    <div style="color:#FF0080; font-size:3rem; margin-bottom:10px;">✨</div>
+                    <h3>Standard Cleans</h3>
+                    <span class="price" style="color:#FF0080;">$25<span style="font-size:1rem;">/hr</span></span>
+                    
+                    <div class="card-content">
+                        <ul class="service-list">
+                            <li>Tidying</li>
+                            <li>Surface Wipe down / Light Dusting</li>
+                            <li>Sweep and Mop</li>
+                            <li>Vacuuming</li>
+                            <li>Bathroom Clean (light clean required)</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- UPDATED: Button opens email with Subject -->
+                    <a href="mailto:alyciascleaningco@outlook.com?subject=Standard%20Clean%20Booking" class="card-btn" style="background:#FF0080;">Book Standard</a>
+                </div>
+
+                <!-- Deep Clean -->
+                <div class="service-card card-2 glass-panel">
+                    <div style="color:#00DFD8; font-size:3rem; margin-bottom:10px;">🚀</div>
+                    <h3>Deep Cleaning & Moving</h3>
+                    <span class="price" style="color:#00DFD8;">$30<span style="font-size:1rem;">/hr</span></span>
+                    
+                    <div class="card-content">
+                        <ul class="service-list">
+                            <li style="color: #00897B; font-weight:bold;">All standard clean services PLUS:</li>
+                            <li>Deep Scrubbing / stain removal of surfaces or heavy mess</li>
+                            <li>Emptying, cleaning and restocking of cupboards</li>
+                            <li>Cleaning of appliances (stove, fridge, wipe down of dishwashers and countertop appliances)</li>
+                            <li>Washing of walls and windows</li>
+                            <li>Dusting of blinds (will NOT take down and wash due to high likelihood of damage)</li>
+                            <li>Carpet cleaning</li>
+                        </ul>
+                    </div>
+
+                    <!-- UPDATED: Button opens email with Subject -->
+                    <a href="mailto:alyciascleaningco@outlook.com?subject=Deep%20Clean%20Booking" class="card-btn" style="background:#00DFD8;">Book Deep Clean</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNPOST / ROADMAP SECTION -->
+    <section id="areas">
+        <div class="container">
+            <h2 class="section-title">My Cleaning Route</h2>
+            
+            <div class="roadmap-container">
+                <div class="roadmap-pole"></div>
+
+                <div class="sign">
+                    <div class="sign-board sign-main">
+                        <span>🏠</span> KAMLOOPS (HQ)
+                    </div>
+                </div>
+
+                <div class="sign left">
+                    <div class="sign-board">
+                        <span>📍</span> Barrière <span class="distance-badge">North</span>
+                    </div>
+                </div>
+
+                <div class="sign right">
+                    <div class="sign-board">
+                        <span>📍</span> Chase <span class="distance-badge">East</span>
+                    </div>
+                </div>
+
+                <div class="sign left">
+                    <div class="sign-board">
+                        <span>📍</span> Logan Lake <span class="distance-badge">South</span>
+                    </div>
+                </div>
+
+                <div class="sign right">
+                    <div class="sign-board">
+                        <span>📍</span> Savona <span class="distance-badge">West</span>
+                    </div>
+                </div>
+                
+                 <div class="sign">
+                    <div class="sign-board" style="background: var(--white); color: var(--text-main); border: 2px dashed #ccc;">
+                        <span>🚚</span> Plus everywhere in between!
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CREATIVE DISCLAIMER SECTION -->
+    <section id="disclaimer">
+        <div class="container">
+            <h2 class="section-title">House Rules</h2>
+            <p style="text-align: center; color: white; margin-bottom: 40px; font-size: 1.1rem;">Read before booking! 👇</p>
+            
+            <div class="caution-wrapper">
+                
+                <!-- Item 1 -->
+                <div class="caution-card">
+                    <div class="hazard-strip strip-1">⚠️ Warning</div>
+                    <div class="caution-content">
+                        <div class="bg-icon">⚙️</div>
+                        <span class="caution-title" style="color: #007CF0;">Appliance Limits</span>
+                        <p class="caution-text">I will not wash out interior of washers/ dryers.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="caution-card">
+                    <div class="hazard-strip strip-2">⚠️ Note</div>
+                    <div class="caution-content">
+                        <div class="bg-icon">👩</div>
+                        <span class="caution-title" style="color: #7928CA;">Team & Expectations</span>
+                        <p class="caution-text">I am a single cleaner, not a team. You choose your hours and priorities. I am a hard efficient worker and will do my best to meet expectations. In the off chance that expectations/ timeframe are unrealistic this will be discussed prior to clean.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="caution-card">
+                    <div class="hazard-strip strip-3">🛑 Strict</div>
+                    <div class="caution-content">
+                        <div class="bg-icon">🛡️</div>
+                        <span class="caution-title" style="color: #ff5e62;">Zero Tolerance</span>
+                        <p class="caution-text">No verbal or physical aggression will be tolerated. If occurs client effectively terminates all services, current and future.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact-section">
+        <div class="glass-panel" style="padding: 60px; border-radius: 40px; max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 3rem; margin-bottom: 20px;">Let's Chat!</h2>
+            <p>Ready to transform your space? Hit me up.</p>
+            
+            <div class="contact-links">
+                <a href="tel:7782574292" class="c-pill">
+                    <span style="font-size:1.5rem;">📞</span> 778-257-4292
+                </a>
+                <a href="mailto:alyciascleaningco@outlook.com" class="c-pill">
+                    <span style="font-size:1.5rem;">💌</span> Email Me
+                </a>
+            </div>
+            <div style="margin-top: 40px;">
+                <a href="https://alyciascleaningco.com/" style="color:white; text-decoration:underline;">Visit Original Website</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align:center; padding: 40px; color:white; font-weight:bold;">
+        <p>&copy; 2023 Alycia’s Cleaning Co. Local & Proud.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+
+        // Add a parallax effect to shapes on scroll
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            shapes[0].style.transform = `translate(${x * 30}px, ${y * 30}px)`;
+            shapes[1].style.transform = `translate(${x * -30}px, ${y * -30}px)`;
+        });
+    </script>
+</body>
+</html>
