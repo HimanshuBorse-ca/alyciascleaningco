@@ -380,6 +380,91 @@
             /* Adjust ticker for mobile */
             .hero-ticker { font-size: 0.8rem; letter-spacing: 1px; }
         }
+/* =====================================================
+   RESPONSIVE SAFETY NET — NON-DESTRUCTIVE
+   (Adds responsiveness without changing existing styles)
+   ===================================================== */
+
+/* Prevent horizontal overflow on all devices */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Fluid containers for ultra-wide screens */
+.container {
+    width: min(1100px, 92vw);
+}
+
+/* HERO TEXT SCALING FIX */
+.hero h1 {
+    word-wrap: break-word;
+    text-wrap: balance;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+/* HERO CARD SCALING */
+.hero-card {
+    width: min(900px, 95vw);
+}
+
+/* SERVICES: prevent card overflow on very small screens */
+@media (max-width: 420px) {
+    .services-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        padding: 25px;
+    }
+
+    .price {
+        font-size: 2rem;
+    }
+}
+
+/* ABOUT IMAGE SAFETY */
+.about-img-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* SIGNPOST SECTION — prevent edge overflow */
+.sign-board {
+    max-width: 95%;
+    text-align: center;
+}
+
+/* CONTACT PILL SAFETY */
+.c-pill {
+    max-width: 95%;
+    text-align: center;
+}
+
+/* NAV SAFETY ON VERY SMALL DEVICES */
+@media (max-width: 360px) {
+    nav {
+        padding: 8px 12px;
+    }
+
+    .brand-logo {
+        height: 40px;
+    }
+}
+
+/* ULTRA-WIDE DISPLAY CONTROL */
+@media (min-width: 1600px) {
+    section {
+        padding: 140px 20px;
+    }
+
+    .hero {
+        min-height: 90vh;
+    }
+}
 
     </style>
 </head>
