@@ -537,6 +537,33 @@ html, body {
         margin-bottom: 25px;
     }
 }
+html {
+    overflow-x: clip;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.hero,
+section,
+nav {
+    overflow-x: clip;
+}
+
+@media (max-width: 768px) {
+    .hero-card {
+        transform: none;
+    }
+
+    .ticker-track {
+        max-width: 100%;
+    }
+
+    .sign-board::after {
+        display: none;
+    }
+}
 
 
     </style>
