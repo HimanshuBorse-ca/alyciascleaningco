@@ -484,6 +484,42 @@ html, body {
         min-height: 90vh;
     }
 }
+        /* =========================================
+   MOBILE HEADER GAP COLLAPSE (CRITICAL FIX)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* Pull nav closer to top */
+    nav {
+        top: 6px;
+        padding: 8px 14px;
+    }
+
+    /* Reduce hero top padding drastically */
+    .hero {
+        padding-top: 50px;
+    }
+
+    /* Remove artificial hero-card offset */
+    .hero-card {
+        top: 0;
+        margin-top: 10px;
+    }
+
+    /* If using brand ribbon, pull it tight */
+    .brand-ribbon {
+        margin-top: 55px;
+        padding: 10px 0;
+        letter-spacing: 2px;
+    }
+
+    /* Shrink logo slightly */
+    .brand-logo {
+        height: 40px;
+    }
+}
+
 
     </style>
 </head>
