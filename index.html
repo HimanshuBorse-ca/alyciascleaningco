@@ -380,6 +380,25 @@
             /* Adjust ticker for mobile */
             .hero-ticker { font-size: 0.8rem; letter-spacing: 1px; }
         }
+        .floating-brand-tag {
+    display: none;
+    margin: 85px auto 0;
+    width: fit-content;
+    padding: 10px 28px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    font-weight: 900;
+    letter-spacing: 2px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 900px) {
+    .floating-brand-tag {
+        display: block;
+    }
+}
+
 /* =====================================================
    RESPONSIVE SAFETY NET — NON-DESTRUCTIVE
    (Adds responsiveness without changing existing styles)
@@ -485,6 +504,8 @@ html, body {
             <div class="header-brand">
                 ALYCIAS CLEANING CO
             </div>
+
+
         </a>
 
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
@@ -496,7 +517,9 @@ html, body {
             <a href="#contact" onclick="toggleMenu()">Contact</a>
         </div>
     </nav>
-
+            <div class="floating-brand-tag">
+    ALYCIAS CLEANING CO
+</div>
     <!-- Hero Section -->
     <section class="hero">
         <div class="glass-panel hero-card">
